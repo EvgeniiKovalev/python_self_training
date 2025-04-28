@@ -11,17 +11,17 @@ def test_method_one_raise():
     assert exc_info.type is ValueError
 
 
-@pytest.mark.parametrize("data, expected",[
+@pytest.mark.parametrize("data_all, expected",[
     ([2, 2, 2, 2], False),
     ([1, 2, 3], False),
     ([1, 2, 1], True)
 ])
-def test_method_two_fail(data, expected):
-    assert method_two(data) == expected
+def test_method_two(data_all, expected):
+    assert method_two(data_all) == expected
 
-# @pytest.mark.parametrize("data", [
-#     [2, 2, 2, 2],
-#     [1, 2, 3]
-# ])
-# def test_method_two_fail(data):
-#     assert not method_two(data)
+@pytest.mark.parametrize("data_fail", [
+    [2, 2, 2, 2],
+    [1, 2, 3]
+])
+def test_method_two_fail(data_fail):
+    assert not method_two(data_fail)
